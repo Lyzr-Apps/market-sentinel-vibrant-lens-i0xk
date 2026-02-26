@@ -4,6 +4,22 @@ import parseLLMJson from '@/lib/jsonParser'
 const LYZR_TASK_URL = 'https://agent-prod.studio.lyzr.ai/v3/inference/chat/task'
 const LYZR_API_KEY = process.env.LYZR_API_KEY || ''
 
+/**
+ * Derive a stable user_id from the LYZR_API_KEY.
+ * Uses a simple hash so the same API key always produces the same user_id,
+ * avoiding random user-{uuid} generation on every request.
+ */
+function deriveUserIdFromApiKey(apiKey: string): string {
+  let hash = 0
+  for (let i = 0; i < apiKey.length; i++) {
+    const char = apiKey.charCodeAt(i)
+    hash = ((hash << 5) - hash) + char
+    hash = hash & hash // Convert to 32-bit integer
+  }
+  const positiveHash = Math.abs(hash).toString(16).padStart(8, '0')
+  return `user-${positiveHash}`
+}
+
 // Types
 interface ArtifactFile {
   file_url: string
@@ -173,7 +189,8 @@ async function submitTask(body: any) {
     )
   }
 
-  const finalUserId = user_id || process.env.LYZR_USER_ID || process.env.NEXT_LYZR_USER_ID || `user-${generateUUID()}`
+  const envUserId = process.env.LYZR_USER_ID?.trim() || process.env.NEXT_LYZR_USER_ID?.trim() || ''
+  const finalUserId = user_id || envUserId || (LYZR_API_KEY ? deriveUserIdFromApiKey(LYZR_API_KEY) : `user-${generateUUID()}`)
   const finalSessionId = session_id || `${agent_id}-${generateUUID().substring(0, 12)}`
 
   const payload: Record<string, any> = {
