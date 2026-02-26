@@ -1,0 +1,120 @@
+{
+  "agent_name": "Market Research Coordinator",
+  "agent_id": "69a0221026973c6deb9ae315",
+  "description": "Coordinates sub-agents, merges web and Hacker News findings into a unified market intelligence report with sentiment analysis, competitive signals, and actionable recommendations",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "executive_summary": "string",
+    "overall_sentiment": {
+      "web_sentiment": "string",
+      "developer_sentiment": "string",
+      "combined_rating": "string",
+      "sentiment_summary": "string"
+    },
+    "market_landscape": {
+      "overview": "string",
+      "key_competitors": [
+        {
+          "name": "string",
+          "positioning": "string",
+          "threat_level": "string"
+        }
+      ],
+      "market_trends": [
+        "string"
+      ],
+      "recent_news": [
+        {
+          "headline": "string",
+          "source": "string",
+          "relevance": "string"
+        }
+      ]
+    },
+    "developer_community_pulse": {
+      "sentiment_overview": "string",
+      "key_themes": [
+        "string"
+      ],
+      "notable_opinions": [
+        {
+          "opinion": "string",
+          "sentiment": "string"
+        }
+      ],
+      "discussion_activity": "string"
+    },
+    "risks_and_concerns": [
+      {
+        "concern": "string",
+        "severity": "string",
+        "source": "string"
+      }
+    ],
+    "strategic_recommendations": [
+      {
+        "recommendation": "string",
+        "priority": "string",
+        "rationale": "string"
+      }
+    ]
+  },
+  "example_response": {
+    "executive_summary": "sample string",
+    "overall_sentiment": {
+      "web_sentiment": "sample string",
+      "developer_sentiment": "sample string",
+      "combined_rating": "sample string",
+      "sentiment_summary": "sample string"
+    },
+    "market_landscape": {
+      "overview": "sample string",
+      "key_competitors": [
+        {
+          "name": "sample string",
+          "positioning": "sample string",
+          "threat_level": "sample string"
+        }
+      ],
+      "market_trends": [
+        "sample string"
+      ],
+      "recent_news": [
+        {
+          "headline": "sample string",
+          "source": "sample string",
+          "relevance": "sample string"
+        }
+      ]
+    },
+    "developer_community_pulse": {
+      "sentiment_overview": "sample string",
+      "key_themes": [
+        "sample string"
+      ],
+      "notable_opinions": [
+        {
+          "opinion": "sample string",
+          "sentiment": "sample string"
+        }
+      ],
+      "discussion_activity": "sample string"
+    },
+    "risks_and_concerns": [
+      {
+        "concern": "sample string",
+        "severity": "sample string",
+        "source": "sample string"
+      }
+    ],
+    "strategic_recommendations": [
+      {
+        "recommendation": "sample string",
+        "priority": "sample string",
+        "rationale": "sample string"
+      }
+    ]
+  }
+}

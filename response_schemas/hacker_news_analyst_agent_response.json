@@ -1,0 +1,60 @@
+{
+  "agent_name": "Hacker News Analyst Agent",
+  "agent_id": "69a021f526973c6deb9ae30f",
+  "description": "Searches Hacker News for community discussions, developer opinions, technical sentiment, and trending conversations related to the product/idea",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "developer_sentiment": {
+      "overall_rating": "string",
+      "summary": "string",
+      "key_themes": ["string"]
+    },
+    "top_discussions": [
+      {
+        "title": "string",
+        "points": "string",
+        "comments_count": "string",
+        "summary": "string",
+        "url": "string"
+      }
+    ],
+    "notable_comments": [
+      {
+        "quote": "string",
+        "context": "string",
+        "sentiment": "string"
+      }
+    ],
+    "technical_concerns": ["string"],
+    "recurring_praise": ["string"],
+    "overall_summary": "string"
+  },
+  "example_response": {
+    "developer_sentiment": {
+      "overall_rating": "Mixed",
+      "summary": "Developer community is cautiously optimistic with some technical concerns",
+      "key_themes": ["Performance", "Developer experience", "Pricing"]
+    },
+    "top_discussions": [
+      {
+        "title": "Show HN: Product X - A new approach to Y",
+        "points": "342",
+        "comments_count": "187",
+        "summary": "Launch post with mixed reception, strong interest in technical architecture",
+        "url": "https://news.ycombinator.com/item?id=12345"
+      }
+    ],
+    "notable_comments": [
+      {
+        "quote": "This solves a real pain point we've had for years",
+        "context": "Senior engineer commenting on the launch post",
+        "sentiment": "Positive"
+      }
+    ],
+    "technical_concerns": ["Scalability under high load", "Vendor lock-in risk"],
+    "recurring_praise": ["Clean API design", "Excellent documentation"],
+    "overall_summary": "The HN community shows cautious optimism with strong interest in the technical approach but concerns about long-term viability."
+  }
+}

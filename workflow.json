@@ -1,0 +1,115 @@
+{
+  "app_name": "MarketPulse AI Market Research Analyzer",
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "Product/Idea Query",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "manager_agent",
+        "type": "Agent",
+        "label": "Market Research Coordinator",
+        "nodeCategory": "agent",
+        "agent_id": "69a0221026973c6deb9ae315",
+        "provider": "openai",
+        "model": "gpt-4.1"
+      },
+      {
+        "id": "web_intel_agent",
+        "type": "Agent",
+        "label": "Web Intelligence Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69a021e03dc260b752bd754c",
+        "provider": "perplexity",
+        "model": "sonar-pro"
+      },
+      {
+        "id": "hn_analyst_agent",
+        "type": "Agent",
+        "label": "Hacker News Analyst Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69a021f526973c6deb9ae30f",
+        "provider": "openai",
+        "model": "gpt-4.1"
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Market Intelligence Report",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "input_node",
+        "target": "manager_agent"
+      },
+      {
+        "source": "manager_agent",
+        "target": "web_intel_agent"
+      },
+      {
+        "source": "manager_agent",
+        "target": "hn_analyst_agent"
+      },
+      {
+        "source": "manager_agent",
+        "target": "output_node"
+      }
+    ]
+  },
+  "agents": [
+    {
+      "node_id": "web_intel_agent",
+      "agent_id": "69a021e03dc260b752bd754c",
+      "name": "Web Intelligence Agent",
+      "role": "Web Market Research Specialist",
+      "provider": "perplexity",
+      "model": "sonar-pro",
+      "temperature": 0.2,
+      "top_p": 1,
+      "type": "sub-agent",
+      "tools": [],
+      "response_schema": "response_schemas/web_intelligence_agent_response.json"
+    },
+    {
+      "node_id": "hn_analyst_agent",
+      "agent_id": "69a021f526973c6deb9ae30f",
+      "name": "Hacker News Analyst Agent",
+      "role": "Hacker News Community Analyst",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "type": "sub-agent",
+      "tools": [
+        {
+          "tool_name": "hackernews",
+          "tool_source": "composio",
+          "action_names": ["HACKERNEWS_SEARCH_STORIES"]
+        }
+      ],
+      "response_schema": "response_schemas/hacker_news_analyst_agent_response.json"
+    },
+    {
+      "node_id": "manager_agent",
+      "agent_id": "69a0221026973c6deb9ae315",
+      "name": "Market Research Coordinator",
+      "role": "Market Intelligence Coordinator",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "type": "manager",
+      "managed_agents": [
+        "69a021e03dc260b752bd754c",
+        "69a021f526973c6deb9ae30f"
+      ],
+      "tools": [],
+      "response_schema": "response_schemas/market_research_coordinator_response.json"
+    }
+  ]
+}

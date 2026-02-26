@@ -1,0 +1,62 @@
+{
+  "agent_name": "Web Intelligence Agent",
+  "agent_id": "69a021e03dc260b752bd754c",
+  "description": "Searches the web for market sentiment, competitor analysis, news coverage, pricing signals, and public opinion about the product/idea",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "market_sentiment": {
+      "overall_rating": "string",
+      "confidence_score": "string",
+      "summary": "string",
+      "positive_signals": ["string"],
+      "negative_signals": ["string"]
+    },
+    "competitors": [
+      {
+        "name": "string",
+        "positioning": "string",
+        "strengths": "string",
+        "weaknesses": "string"
+      }
+    ],
+    "news_coverage": [
+      {
+        "headline": "string",
+        "source": "string",
+        "summary": "string",
+        "url": "string"
+      }
+    ],
+    "market_trends": ["string"],
+    "recommendations": ["string"]
+  },
+  "example_response": {
+    "market_sentiment": {
+      "overall_rating": "Positive",
+      "confidence_score": "High",
+      "summary": "Overall market sentiment is positive with strong adoption signals",
+      "positive_signals": ["Growing user base", "Positive analyst coverage"],
+      "negative_signals": ["Privacy concerns", "Pricing pushback"]
+    },
+    "competitors": [
+      {
+        "name": "Competitor A",
+        "positioning": "Enterprise-focused solution",
+        "strengths": "Strong brand recognition",
+        "weaknesses": "Higher pricing tier"
+      }
+    ],
+    "news_coverage": [
+      {
+        "headline": "Product X raises Series B",
+        "source": "TechCrunch",
+        "summary": "Company raised $50M in Series B funding",
+        "url": "https://example.com/article"
+      }
+    ],
+    "market_trends": ["AI integration becoming standard", "Shift to subscription models"],
+    "recommendations": ["Focus on enterprise segment", "Address pricing concerns"]
+  }
+}

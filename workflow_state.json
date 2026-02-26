@@ -1,0 +1,35 @@
+{
+  "app_name": "MarketPulse AI Market Research Analyzer",
+  "agents": {
+    "web_intel_agent": {
+      "agent_id": "69a021e03dc260b752bd754c",
+      "name": "Web Intelligence Agent",
+      "role": "Web Market Research Specialist",
+      "provider": "perplexity",
+      "model": "sonar-pro",
+      "type": "sub-agent"
+    },
+    "hn_analyst_agent": {
+      "agent_id": "69a021f526973c6deb9ae30f",
+      "name": "Hacker News Analyst Agent",
+      "role": "Hacker News Community Analyst",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "type": "sub-agent"
+    },
+    "manager_agent": {
+      "agent_id": "69a0221026973c6deb9ae315",
+      "name": "Market Research Coordinator",
+      "role": "Market Intelligence Coordinator",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "type": "manager",
+      "managed_agents": [
+        "69a021e03dc260b752bd754c",
+        "69a021f526973c6deb9ae30f"
+      ]
+    }
+  },
+  "primary_agent_id": "69a0221026973c6deb9ae315",
+  "created_at": "2026-02-26"
+}
